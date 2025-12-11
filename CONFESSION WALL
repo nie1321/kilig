@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Confessions</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- If you plan to use Firebase, add your firebase SDKs and set window.firebaseConfig in script.js or here -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script> -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script> -->
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Confessions</h1>
+      <p class="subtitle">Share anonymously or leave a name. All confessions are moderated before appearing.</p>
+    </header>
+
+    <section class="card">
+      <form id="confession-form">
+        <label for="confession-text">Your confession</label>
+        <textarea id="confession-text" rows="6" placeholder="Type your confession..." required maxlength="1000"></textarea>
+
+        <div class="row">
+          <label for="confession-name">Name (optional)</label>
+          <input id="confession-name" type="text" placeholder="e.g. Alex" maxlength="100" />
+        </div>
+
+        <div class="row">
+          <label class="inline"><input id="anonymous" type="checkbox" checked /> Post anonymously</label>
+        </div>
+
+        <div class="row">
+          <button id="submit-btn" type="submit">Submit confession</button>
+          <button id="clear-btn" type="button" class="muted">Clear</button>
+        </div>
+        <p class="note">Max 1000 characters. This demo will not publish until approved by admin.</p>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Approved confessions</h2>
+      <ul id="confessions-list" class="list"></ul>
+      <p id="no-confessions" class="muted">No confessions yet.</p>
+    </section>
+
+    <section class="card admin">
+      <h2>Admin panel</h2>
+      <div id="admin-login">
+        <label for="admin-pass">Admin passphrase</label>
+        <input id="admin-pass" type="password" placeholder="enter passphrase" />
+        <div class="row">
+          <button id="admin-login-btn" type="button">Log in</button>
+          <button id="admin-logout-btn" type="button" class="muted hidden">Log out</button>
+        </div>
+        <p class="muted">In demo mode this is just a client-side passphrase (insecure). For production use Firebase Authentication or server-side auth.</p>
+      </div>
+
+      <div id="pending-area" class="hidden">
+        <h3>Pending confessions</h3>
+        <ul id="pending-list" class="list"></ul>
+      </div>
+    </section>
+
+    <footer class="muted small">
+      <p>Privacy note: This demo stores confessions client-side unless you configure a backend. Do not post illegal content. Respect others.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
